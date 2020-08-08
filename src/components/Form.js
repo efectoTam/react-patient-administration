@@ -11,9 +11,15 @@ const Form = () => {
   });
 
   // Function when the user white inside the inputs
-  const handleState = () => {
-    console.log('Escribiendo...')
+  const handleState = e => {
+    updateMeeting({
+      ...meeting,
+      [e.target.name]: e.target.value
+    })
   }
+
+  // Take the values
+  const { pet, owner, date, time, symptoms } = meeting;
 
   return (
     <Fragment>
@@ -26,6 +32,7 @@ const Form = () => {
           className="u-full-width"
           placeholder="Nombre mascota"
           onChange={handleState}
+          value="pet"
         />
         <label>Nombre dueño</label>
         <input
@@ -34,6 +41,7 @@ const Form = () => {
           className="u-full-width"
           placeholder="Nombre dueño de la mascota"
           onChange={handleState}
+          value="owner"
         />
         <label>Fecha</label>
         <input
@@ -41,6 +49,7 @@ const Form = () => {
           name="date"
           className="u-full-width"
           onChange={handleState}
+          value="date"
         />
         <label>Hora</label>
         <input
@@ -48,12 +57,14 @@ const Form = () => {
           name="time"
           className="u-full-width"
           onChange={handleState}
+          value="time"
         />
         <label>Síntomas</label>
         <textarea
           name="symptoms"
           className="u-full-width"
           onChange={handleState}
+          value="symptoms"
         >
         </textarea>
         <button
