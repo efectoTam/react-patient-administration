@@ -1,6 +1,20 @@
-import React, {Fragment} from 'react';
+import React, { Fragment, useState } from 'react';
 
 const Form = () => {
+  // Create state to meetings
+  const [meeting, updateMeeting] = useState({
+    pet: '',
+    owner: '',
+    date: '',
+    time: '',
+    symptoms: ''
+  });
+
+  // Function when the user white inside the inputs
+  const handleState = () => {
+    console.log('Escribiendo...')
+  }
+
   return (
     <Fragment>
       <h2>Crear cita</h2>
@@ -11,6 +25,7 @@ const Form = () => {
           name="pet"
           className="u-full-width"
           placeholder="Nombre mascota"
+          onChange={handleState}
         />
         <label>Nombre dueño</label>
         <input
@@ -18,23 +33,27 @@ const Form = () => {
           name="owner"
           className="u-full-width"
           placeholder="Nombre dueño de la mascota"
+          onChange={handleState}
         />
         <label>Fecha</label>
         <input
           type="date"
           name="date"
           className="u-full-width"
+          onChange={handleState}
         />
         <label>Hora</label>
         <input
           type="time"
           name="time"
           className="u-full-width"
+          onChange={handleState}
         />
         <label>Síntomas</label>
         <textarea
-          name="symptom"
+          name="symptoms"
           className="u-full-width"
+          onChange={handleState}
         >
         </textarea>
         <button
