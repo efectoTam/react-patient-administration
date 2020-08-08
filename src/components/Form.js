@@ -21,10 +21,26 @@ const Form = () => {
   // Take the values
   const { pet, owner, date, time, symptoms } = meeting;
 
+  // When the user press the button
+  const meetingSubmit = e => {
+    e.preventDefault();
+    
+    // Validate
+    
+    // Id assignation
+
+    // Create meeting
+
+    // Form restart
+  }
+
   return (
     <Fragment>
       <h2>Crear cita</h2>
-      <form>
+      <form
+        onSubmit={meetingSubmit}
+      
+      >
         <label>Nombre mascota</label>
         <input
           type="text"
