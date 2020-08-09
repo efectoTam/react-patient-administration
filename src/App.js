@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Form from './components/Form';
 import Meeting from './components/Meeting';
 
@@ -6,6 +6,11 @@ function App() {
 
   // Meetings array
   const [meetings, saveMeetings] = useState([]);
+
+  // Use effect when the state change
+  useEffect( () => {
+    console.log('Listo')
+  }, [meetings] );
 
   // Function to add new meetings
   const createMeeting = meeting => {
