@@ -14,12 +14,14 @@ function App() {
 
   // Use effect when the state change
   useEffect( () => {
+    let initialMeetings = JSON.parse(localStorage.getItem('meetings'));
+
     if(initialMeetings) {
       localStorage.setItem('meetings', JSON.stringify(meetings))
     } else {
       localStorage.setItem('meetings', JSON.stringify([]));
     }
-  }, [meetings, initialMeetings] );
+  }, [meetings] );
 
   // Function to add new meetings
   const createMeeting = meeting => {

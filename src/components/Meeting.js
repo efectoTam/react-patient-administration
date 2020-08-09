@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Meeting = ({ meeting, deleteMeeting }) => (
   <div className="cita">
@@ -15,5 +16,10 @@ const Meeting = ({ meeting, deleteMeeting }) => (
     </button>
   </div>
 );
+
+Meeting.propTypes = {
+  meeting: PropTypes.object.isRequired,
+  deleteMeeting: PropTypes.func.isRequired
+}
  
 export default Meeting;

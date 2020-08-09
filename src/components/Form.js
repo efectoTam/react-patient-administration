@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import uuid from 'uuid/dist/v4';
+import PropTypes from 'prop-types';
 
 const Form = ({ createMeeting }) => {
   // Create state to meetings
@@ -114,6 +115,10 @@ const Form = ({ createMeeting }) => {
       </form>
     </Fragment>
   );
+}
+
+Form.propTypes = {
+  createMeeting: PropTypes.func.isRequired
 }
 
 export default Form;
