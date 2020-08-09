@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import uuid from 'uuid/dist/v4';
 
-const Form = () => {
+const Form = ({ createMeeting }) => {
   // Create state to meetings
   const [meeting, updateMeeting] = useState({
     pet: '',
@@ -39,9 +39,10 @@ const Form = () => {
     
     // Id assignation
     meeting.id = uuid();
-    console.log(meeting);
 
     // Create meeting
+    createMeeting(meeting);
+    console.log(meeting);
 
     // Form restart
   }
@@ -55,7 +56,6 @@ const Form = () => {
       }
       <form
         onSubmit={meetingSubmit}
-      
       >
         <label>Nombre mascota</label>
         <input
@@ -109,5 +109,5 @@ const Form = () => {
     </Fragment>
   );
 }
- 
+
 export default Form;
