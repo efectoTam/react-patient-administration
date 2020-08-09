@@ -12,6 +12,12 @@ function App() {
     saveMeetings([...meetings, meeting]);
   }
 
+  // Function to remove a meeting by its id
+  const deleteMeeting = id => {
+    const newMeetings = meetings.filter(meeting => meeting.id !== id);
+    saveMeetings(newMeetings)
+  }
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -28,6 +34,7 @@ function App() {
               <Meeting
                 key={meeting.id}
                 meeting={meeting}
+                deleteMeeting={deleteMeeting}
               />
             ))}
           </div>
