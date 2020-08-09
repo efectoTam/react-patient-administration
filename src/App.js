@@ -18,6 +18,11 @@ function App() {
     saveMeetings(newMeetings)
   }
 
+  // Conditional message
+  const title = meetings.length === 0
+  ? 'No hay citas'
+  : 'Administra tus citas'
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -29,7 +34,7 @@ function App() {
             />
           </div>
           <div className="one-half column">
-            <h2>Administra tus citas</h2>
+            <h2>{title}</h2>
             {meetings.map(meeting => (
               <Meeting
                 key={meeting.id}
