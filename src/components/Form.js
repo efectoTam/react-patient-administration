@@ -10,6 +10,8 @@ const Form = () => {
     symptoms: ''
   });
 
+  const [error, updateError] = useState(false)
+
   // Function when the user white inside the inputs
   const handleState = e => {
     updateMeeting({
@@ -24,8 +26,12 @@ const Form = () => {
   // When the user press the button
   const meetingSubmit = e => {
     e.preventDefault();
-    
+      
     // Validate
+    if(pet.trim() === '' || owner.trim() === '' || date.trim() === '' || time.trim() === '' || symptoms.trim() === '') {
+      updateError(true);
+      return;
+    }
     
     // Id assignation
 
@@ -37,6 +43,10 @@ const Form = () => {
   return (
     <Fragment>
       <h2>Crear cita</h2>
+      { error
+        ? <p className="alerta-error">Todos los campos son obligatorios</p>
+        : null
+      }
       <form
         onSubmit={meetingSubmit}
       
@@ -48,7 +58,7 @@ const Form = () => {
           className="u-full-width"
           placeholder="Nombre mascota"
           onChange={handleState}
-          value="pet"
+          value=""
         />
         <label>Nombre dueño</label>
         <input
@@ -57,7 +67,7 @@ const Form = () => {
           className="u-full-width"
           placeholder="Nombre dueño de la mascota"
           onChange={handleState}
-          value="owner"
+          value=""
         />
         <label>Fecha</label>
         <input
@@ -65,7 +75,7 @@ const Form = () => {
           name="date"
           className="u-full-width"
           onChange={handleState}
-          value="date"
+          value=""
         />
         <label>Hora</label>
         <input
@@ -73,14 +83,14 @@ const Form = () => {
           name="time"
           className="u-full-width"
           onChange={handleState}
-          value="time"
+          value=""
         />
         <label>Síntomas</label>
         <textarea
           name="symptoms"
           className="u-full-width"
           onChange={handleState}
-          value="symptoms"
+          value=""
         >
         </textarea>
         <button
