@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import uuid from 'uuid/dist/v4';
 
 const Form = () => {
   // Create state to meetings
@@ -32,8 +33,13 @@ const Form = () => {
       updateError(true);
       return;
     }
+
+    // Delete validation message
+    updateError(false);
     
     // Id assignation
+    meeting.id = uuid();
+    console.log(meeting);
 
     // Create meeting
 
@@ -43,7 +49,7 @@ const Form = () => {
   return (
     <Fragment>
       <h2>Crear cita</h2>
-      { error
+      {error
         ? <p className="alerta-error">Todos los campos son obligatorios</p>
         : null
       }
@@ -58,7 +64,7 @@ const Form = () => {
           className="u-full-width"
           placeholder="Nombre mascota"
           onChange={handleState}
-          value=""
+          value={pet}
         />
         <label>Nombre dueño</label>
         <input
@@ -67,7 +73,7 @@ const Form = () => {
           className="u-full-width"
           placeholder="Nombre dueño de la mascota"
           onChange={handleState}
-          value=""
+          value={owner}
         />
         <label>Fecha</label>
         <input
@@ -75,7 +81,7 @@ const Form = () => {
           name="date"
           className="u-full-width"
           onChange={handleState}
-          value=""
+          value={date}
         />
         <label>Hora</label>
         <input
@@ -83,14 +89,14 @@ const Form = () => {
           name="time"
           className="u-full-width"
           onChange={handleState}
-          value=""
+          value={time}
         />
         <label>Síntomas</label>
         <textarea
           name="symptoms"
           className="u-full-width"
           onChange={handleState}
-          value=""
+          value={symptoms}
         >
         </textarea>
         <button
