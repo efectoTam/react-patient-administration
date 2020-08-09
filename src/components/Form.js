@@ -42,9 +42,15 @@ const Form = ({ createMeeting }) => {
 
     // Create meeting
     createMeeting(meeting);
-    console.log(meeting);
 
     // Form restart
+    updateMeeting({
+      pet: '',
+      owner: '',
+      date: '',
+      time: '',
+      symptoms: ''
+    })
   }
 
   return (
