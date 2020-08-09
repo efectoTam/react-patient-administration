@@ -3,14 +3,23 @@ import Form from './components/Form';
 import Meeting from './components/Meeting';
 
 function App() {
+  // Meetings in localStorage
+  let initialMeetings = JSON.parse(localStorage.getItem('meetings'));
+  if(!initialMeetings) {
+    initialMeetings = [];
+  }
 
   // Meetings array
-  const [meetings, saveMeetings] = useState([]);
+  const [meetings, saveMeetings] = useState(initialMeetings);
 
   // Use effect when the state change
   useEffect( () => {
-    console.log('Listo')
-  }, [meetings] );
+    if(initialMeetings) {
+      localStorage.setItem('meetings', JSON.stringify(meetings))
+    } else {
+      localStorage.setItem('meetings', JSON.stringify([]));
+    }
+  }, [meetings, initialMeetings] );
 
   // Function to add new meetings
   const createMeeting = meeting => {
